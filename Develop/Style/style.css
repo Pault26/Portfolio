@@ -1,6 +1,8 @@
 :root {
   --g1: rgb(98, 0, 234);
   --g2: rgb(236, 64, 122);
+
+  --border-color: rgb(6, 11, 25);
 }
 
 @keyframes background-pan {
@@ -25,6 +27,61 @@ body {
   height: 100vh;
   overflow: hidden;
   margin: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+nav > .nav-section {
+  padding: 3rem 2rem;
+  display: flex;
+  gap: 1rem;
+  border-left: 1px solid var(--border-color);
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-logo-section,
+#nav-link-section {
+  flex-basis: calc(100% / 3);
+}
+
+#nav-logo-section {
+  justify-content: flex-start;
+}
+
+#nav-logo-section {
+  font-size: 2.5rem;
+}
+
+#nav-link-section {
+  gap: 6rem
+}
+
+#nav-social-section,
+#nav-contact-section {
+  flex-grow: 1;
+}
+
+#nav-social-section {
+  gap: 3rem
+}
+
+h1, h2, h3, a, p, span {
+  font-family: sans-serif;
+  font-weight: 400;
+  color: white
+}
+
+a {
+  text-decoration: none;
 }
 
 body.toggled {
