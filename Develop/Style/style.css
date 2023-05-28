@@ -1,13 +1,96 @@
-/* General */
-body {
-  margin: 0px;
-  background-color: black;
-  height: 100vh;
-  display: grid;
-  place-items: center;
+:root {
+  --g1: rgb(98, 0, 234);
+  --g2: rgb(236, 64, 122);
 }
 
-/* Card Basics */
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+  
+  to {
+    background-position: -200% center;
+  }
+}
+
+body {
+  animation: background-pan 10s linear infinite;
+  background: linear-gradient(
+    to right,
+    var(--g1),
+    var(--g2),
+    var(--g1)
+  );
+  background-size: 200%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0px;
+}
+
+body.toggled {
+  animation: none;
+}
+
+body.toggled > #title {
+  opacity: 0;
+}
+
+body.toggled > #icon {
+  opacity: 1;
+}
+
+body.toggled > #tiles > .tile:hover {
+  opacity: 0.1 !important;
+}
+
+.centered {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#tiles {
+  height: calc(100vh - 1px);
+  width: calc(100vw - 1px);
+  position: relative;
+  z-index: 2;
+  
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+.tile {
+  cursor: pointer;
+  position: relative;
+}
+
+.tile:hover:before {
+  background-color: rgb(30, 30, 30);
+}
+
+.tile:before {
+  background-color: rgb(15, 15, 15);
+  content: "";
+  inset: 0.5px;
+  position: absolute;
+}
+
+.card-group {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  z-index: 3;
+}
+
+.centered {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .card-group,
 .card {
   aspect-ratio: 5 / 7;
@@ -26,22 +109,22 @@ body {
 
 .big-card {
   width: 30vmin;
-  height: 42vmin; /* Maintain the aspect ratio of 5:7 */
+  height: 42vmin;
   border-radius: 1vmin;
-  overflow: hidden; /* Ensure the image stays within the card boundaries */
+  overflow: hidden; 
 }
 
 .big-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Scale the image to cover the entire container */
+  object-fit: cover;
 }
 
 .little-card {
   width: 12vmin;
-  height: 16.8vmin; /* Maintain the aspect ratio of 5:7 */
+  height: 16.8vmin;
   border-radius: 2vmin;
-  overflow: hidden; /* Ensure the image stays within the card boundaries */
+  overflow: hidden;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,17 +134,15 @@ body {
 .little-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Scale the image to cover the entire container */
+  object-fit: cover; 
 }
 
-/* Optimization */
+
 .big-card,
 .little-card {
   will-change: transform;
 }
 
-/* ANIMATION */
-/* Big card animation */
 .big-card:nth-child(2){
   transform: translateX(-10%) rotate(-1deg);
 }
@@ -93,7 +174,6 @@ body {
   transform: translate(75%, 16%) rotate(24deg);
 }
 
-/* Little card animation */
 .card-group:hover > .little-card:nth-child(1) {
   transform: translate(200%, -160%) rotate(-15deg)
 }
@@ -109,5 +189,3 @@ body {
 .card-group:hover > .little-card:nth-child(7) {
   transform: translate(-280%, 140%) rotate(-15deg)
 }
-
-
