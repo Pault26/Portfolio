@@ -2,7 +2,7 @@
   --g1: rgb(98, 0, 234);
   --g2: rgb(236, 64, 122);
 
-  --border-color: rgb(6, 11, 25);
+  --border-color: rgb(15, 15, 15);
 }
 
 @keyframes background-pan {
@@ -36,14 +36,14 @@ body {
 nav {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid var(--border-color);
+  /* border-bottom: 2px solid var(--border-color); */
 }
 
 nav > .nav-section {
-  padding: 3rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   gap: 1rem;
-  border-left: 1px solid var(--border-color);
+  /* border-left: 1px solid var(--border-color); */
   align-items: center;
   justify-content: center;
 }
@@ -55,6 +55,9 @@ nav > .nav-section {
 
 #nav-logo-section {
   justify-content: flex-start;
+  cursor: pointer;
+  /* letter-spacing: 2px !important; */
+  word-spacing: 5px !important;
 }
 
 #nav-logo-section {
@@ -75,13 +78,18 @@ nav > .nav-section {
 }
 
 h1, h2, h3, a, p, span {
-  font-family: sans-serif;
+  font-family: 'Anton', sans-serif;
   font-weight: 400;
   color: white
 }
 
 a {
   text-decoration: none;
+  font-size: x-large;
+}
+
+h1 {
+  font-size: smaller;
 }
 
 body.toggled {
